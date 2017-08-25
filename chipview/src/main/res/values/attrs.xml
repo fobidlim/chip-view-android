@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ChipTextView">
-        <attr name="backgroundColor" format="color" />
+        <attr name="chip_backgroundColor" format="color" />
+        <attr name="chip_radius" format="dimension" />
     </declare-styleable>
 </resources>

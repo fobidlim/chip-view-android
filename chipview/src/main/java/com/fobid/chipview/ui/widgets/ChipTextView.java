@@ -3,13 +3,14 @@ package com.fobid.chipview.ui.widgets;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.support.annotation.ColorInt;
+import android.support.annotation.Dimension;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
+import android.view.Gravity;
 
 import com.fobid.chipview.R;
 
@@ -19,13 +20,12 @@ import com.fobid.chipview.R;
 
 public class ChipTextView extends AppCompatTextView {
 
-    private static final int DEFAULT_COLOR = Color.TRANSPARENT;
-
     private final Paint paint;
     private final Rect rect;
     private final RectF rectF;
 
     private int backgroundColor;
+    private float radius;
 
     public ChipTextView(Context context) {
         this(context, null);
@@ -38,6 +38,8 @@ public class ChipTextView extends AppCompatTextView {
     public ChipTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
+        radius = context.getResources().getDimension(R.dimen.chips_height);
+
         paint = new Paint();
         rect = new Rect();
         rectF = new RectF();
@@ -46,21 +48,30 @@ public class ChipTextView extends AppCompatTextView {
         int n = a.getIndexCount();
         for (int i = 0; i < n; i++) {
             int attr = a.getIndex(i);
-            if (attr == R.styleable.ChipTextView_backgroundColor) {
-                a.getColor(attr, DEFAULT_COLOR);
-                setBackgroundColor(a.getColor(attr, 0));
+            if (attr == R.styleable.ChipTextView_chip_backgroundColor) {
+                backgroundColor = a.getColor(attr, 0);
+            } else if (attr == R.styleable.ChipTextView_chip_radius) {
+                radius = a.getDimension(attr, radius);
             }
         }
         a.recycle();
+
+        setGravity(Gravity.CENTER);
+        setBackgroundColor(backgroundColor);
+        setRadius(radius);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (radius == 0) {
+            radius = getHeight();
+        }
+
         paint.setColor(backgroundColor);
         rect.set(0, 0, getWidth(), getHeight());
         rectF.set(rect);
 
-        canvas.drawRoundRect(rectF, getHeight(), getHeight(), paint);
+        canvas.drawRoundRect(rectF, radius, radius, paint);
 
         super.onDraw(canvas);
     }
@@ -73,5 +84,15 @@ public class ChipTextView extends AppCompatTextView {
     @ColorInt
     int getBackgroundColor() {
         return backgroundColor;
+    }
+
+    public void setRadius(final @Dimension float radius) {
+        this.radius = radius;
+    }
+
+    public
+    @Dimension
+    float getRadius() {
+        return radius;
     }
 }

@@ -2,7 +2,9 @@
 <com.fobid.chipview.ui.widgets.ChipTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/chip_text_view"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="@dimen/chips_height"
+    android:paddingLeft="@dimen/chips_padding"
+    android:paddingRight="@dimen/chips_padding"
     android:textColor="@android:color/white"
-    app:backgroundColor="@android:color/black" />
+    app:chip_backgroundColor="@android:color/black" />
