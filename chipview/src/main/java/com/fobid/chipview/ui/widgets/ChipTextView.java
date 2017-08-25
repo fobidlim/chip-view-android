@@ -38,7 +38,7 @@ public class ChipTextView extends AppCompatTextView {
     public ChipTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        radius = context.getResources().getDimension(R.dimen.chips_height);
+        radius = context.getResources().getDimension(R.dimen.chip_radius);
 
         paint = new Paint();
         rect = new Rect();
@@ -63,10 +63,6 @@ public class ChipTextView extends AppCompatTextView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (radius == 0) {
-            radius = getHeight();
-        }
-
         paint.setColor(backgroundColor);
         rect.set(0, 0, getWidth(), getHeight());
         rectF.set(rect);

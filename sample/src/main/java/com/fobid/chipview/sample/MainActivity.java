@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayout chipsContainer = (LinearLayout) findViewById(R.id.chips_container);
 
         final Resources resources = getResources();
-        final int chipTextViewHorizontalPadding = (int) resources.getDimension(R.dimen.chips_padding);
-        final int chipTextViewHeight = (int) resources.getDimension(R.dimen.chips_height);
+        final int chipTextViewHorizontalPadding = (int) resources.getDimension(R.dimen.chip_padding);
+        final int chipTextViewHeight = (int) resources.getDimension(R.dimen.chip_height);
 
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

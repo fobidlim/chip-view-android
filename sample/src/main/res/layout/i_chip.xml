@@ -4,7 +4,7 @@
     android:id="@id/chip_text_view"
     android:layout_width="wrap_content"
     android:layout_height="@dimen/chips_height"
-    android:paddingLeft="@dimen/chips_padding"
-    android:paddingRight="@dimen/chips_padding"
+    android:paddingLeft="@dimen/chip_padding"
+    android:paddingRight="@dimen/chip_padding"
     android:textColor="@android:color/white"
     app:chip_backgroundColor="@android:color/black" />
